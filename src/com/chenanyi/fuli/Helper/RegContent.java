@@ -23,6 +23,7 @@ public class RegContent {
 		Matcher m = Pattern.compile(reg).matcher(info);
 		while (m.find()) {
 			String r = m.group();
+			r = r.substring(12);
 			result.add(r);
 		}
 		return result;

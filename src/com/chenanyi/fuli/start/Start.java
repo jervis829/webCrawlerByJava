@@ -26,12 +26,15 @@ public class Start {
 			System.out.println("第三个参数，保存的地址 ： 格式 f:\\\\image4\\\\");
 			System.out
 					.println("**************************************************************");
-			System.out.println("请输入第一个参数");
-			int value = scanner.nextInt();
-			System.out.println("请输入第二个参数");
-			int value1 = scanner.nextInt();
-			System.out.println("请输入第三个参数");
-			String line = scanner.next();
+//			System.out.println("请输入第一个参数");
+//			int value = scanner.nextInt();
+			int value = 0;
+//			System.out.println("请输入第二个参数");
+//			int value1 = scanner.nextInt();
+			int value1 = 6900;
+//			System.out.println("请输入第三个参数");
+//			String line = scanner.next();
+			String line = "C:\\pravite\\Doc\\pic";
 			System.out.println("开始执行");
 			Getimg.Getimg(value, value1, line);
 			System.out.println("执行完毕");
