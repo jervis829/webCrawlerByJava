@@ -22,13 +22,13 @@ public class GetTxT {
 			String info = GetHHH.getContentFormUrl(url);
 			String reg = "article-show-id-\\d{6}";
 			List<String> result = RegContent.GetallURL(RegContent.GetCon(reg,
-					info));
+					info,12));
 			for (int i = 0; i < result.size(); i++) {
 				String cont = GetHHH.getContentFormUrl(result.get(i));
 				List<String> titles = RegContent.GetCon("<title>.*?</title>",
-						cont);
+						cont,12);
 				String reggg = "<br />.*?<br />";
-				List<String> Content = RegContent.GetCon(reggg, cont);
+				List<String> Content = RegContent.GetCon(reggg, cont,12);
 				String conts = "";
 				for (int f = 0; f < Content.size(); f++) {
 					conts += Content.get(f);

@@ -1,4 +1,7 @@
 package com.chenanyi.fuli.Helper;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLSocket;
+
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -17,12 +20,16 @@ public static String getContentFormUrl(String url)
         /* 实例化一个HttpClient客户端 */
         HttpClient client = new DefaultHttpClient();
         HttpGet getHttp = new HttpGet(url);
+        
 
         String content = null;
 
         HttpResponse response;
         try
         {
+//            SSLContext sc = SSLContext.getInstance("TSLv1");
+//            String [] sp = new String[] {sc.getProtocol()};
+//            SSLSocket.setEnabledProtocols(sp);
             /*获得信息载体*/
             response = client.execute(getHttp);
             HttpEntity entity = response.getEntity();

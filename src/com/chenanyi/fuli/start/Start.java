@@ -31,7 +31,7 @@ public class Start {
 			int value = 0;
 //			System.out.println("请输入第二个参数");
 //			int value1 = scanner.nextInt();
-			int value1 = 6900;
+			int value1 = 3;
 //			System.out.println("请输入第三个参数");
 //			String line = scanner.next();
 			String line = "C:\\pravite\\Doc\\pic";

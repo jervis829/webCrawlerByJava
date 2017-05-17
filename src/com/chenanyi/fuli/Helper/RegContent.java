@@ -18,12 +18,12 @@ public class RegContent {
 	 * @param info
 	 * @return List<String>
 	 */
-	public static List<String> GetCon(String reg, String info) {
+	public static List<String> GetCon(String reg, String info, int subIndex) {
 		List<String> result = new ArrayList<String>();
 		Matcher m = Pattern.compile(reg).matcher(info);
 		while (m.find()) {
 			String r = m.group();
-			r = r.substring(12);
+			r = r.substring(subIndex);
 			result.add(r);
 		}
 		return result;

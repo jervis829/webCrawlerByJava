@@ -16,30 +16,30 @@ public class Getimg {
 	 */
 	public static void Getimg(int cate, int pagecount, String path) {
 		int count = 0;
-		for (int m = 5000; m <= pagecount; m++) {
-			// article-list-id-16-page- 16是小说- RQ小说。
-			// 6是图片---ZPTP
-			String url = "https://www.t66y.com/htm_data/16/1704/235" + m + ".html";
-//			String url = "https://www.t66y.com/htm_data/8/1704/2363379.html";
-			String info = GetHHH.getContentFormUrl(url);
-			String reg = "(?:((<input src='http).+?(jpg)))";
-//            List<String> result = RegContent.GetallURL(RegContent.GetCon(reg, info));
-            List<String> result = RegContent.GetCon(reg, info);
-//			for (int i = 0; i < result.size(); i++) {
-//				String cont = GetHHH.getContentFormUrl(result.get(i));
-//				List<String> img_urls = RegContent.GetCon("<img src=\"(.*?)/>",
-//						cont);
+		for (int m = 2; m <= pagecount; m++) {
+			// url
+		    String startUrl = "https://www.t66y.com/thread0806.php?fid=8&search=&page="+m;
+//		    String startUrl = "https://www.t66y.com/thread0806.php?fid=16";
+		    // from startUrl find target url
+		    String startInfo = GetHHH.getContentFormUrl(startUrl);
+		    String startReg = "(?:((<a href=\"htm_data).+?(html)))";
+		    List<String> startResult = RegContent.GetCon(startReg, startInfo,9);
+		    System.out.println();
+		    for (int i = 0; i < startResult.size(); i++) {
+		        String url = startResult.get(i);
+		        url = "https://www.t66y.com/"+url;
+//    			String url = "https://www.t66y.com/htm_data/16/1704/235" + m + ".html";
+    			String info = GetHHH.getContentFormUrl(url);
+    			String reg = "(?:((<input src='http).+?(jpg)))";
+                List<String> result = RegContent.GetCon(reg, info,12);
 				for (int j = 0; j < result.size(); j++) {
 					count++;
-//					String temp = result.get(j).substring(10);
-//					int index = temp.indexOf("\"");
-//					temp = temp.substring(0, index);
 					Download.down(result.get(j), path, count);
 					System.out.println(count + "\tOK\t" + result.get(j));
 				}
-			}
+		    }
 		}
-//	}
+	}
 
 	/**
 	 * @author Jervis！
@@ -56,11 +56,11 @@ public class Getimg {
 		String info = GetHHH.getContentFormUrl(url);
 		String reg = "article-show-id-\\d{6}";
 		List<String> result = RegContent.GetallURL(RegContent.GetCon(reg,
-				info));
+				info,12));
 		for (int i = 0; i < result.size(); i++) {
 			String cont = GetHHH.getContentFormUrl(result.get(i));
 			List<String> img_urls = RegContent.GetCon("<img src=\"(.*?)/>",
-					cont);
+					cont,12);
 			for (int j = 0; j < img_urls.size(); j++) {
 				String temp = img_urls.get(j).substring(10);
 				int index = temp.indexOf("\"");
